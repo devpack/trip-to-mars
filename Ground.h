@@ -14,8 +14,8 @@
 
 const bool  USEFROMFILE  = 1;         // Data Source
 
-const int   XWORLDSIZE   = 513;       // BE EQUAL ! And = image size if USEFROMFILE  = 1
-const int   ZWORLDSIZE   = 513;       // BE EQUAL ! And = image size if USEFROMFILE  = 1
+const int   XWORLDSIZE   = 1025;//513;      // BE EQUAL ! And = image size if USEFROMFILE  = 1
+const int   ZWORLDSIZE   = 1025; //513;      // BE EQUAL ! And = image size if USEFROMFILE  = 1
 
 const float MAXHIGH      = 255.0;
 const float SOFTCOEF     = 0.3;

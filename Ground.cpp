@@ -10,11 +10,11 @@ int i,j;
  zground  = Zground;
  maxhigh  = MaxHigh;
  softcoef = SoftCoef;
- 
+
  map = new float* [xground];
  for(i=0; i<xground; i++)
-  map[i] = new float [zground]; 
-   
+  map[i] = new float [zground];
+
  if( !USEFROMFILE )
  {
   for(i=0; i<xground; i++)
@@ -26,31 +26,31 @@ int i,j;
   map[xground-1][0]=xrand(0.0, maxhigh);
   map[0][zground-1]=xrand(0.0, maxhigh);
   map[xground-1][zground-1]=xrand(0.0, maxhigh);
- 
+
   map[0][0]=0.;
   map[xground-1][0]=0.;
   map[0][zground-1]=0.;
-  map[xground-1][zground-1]=0.; 
- 
-  buildground(); 
+  map[xground-1][zground-1]=0.;
+
+  buildground();
   lissage(LISSAGEDEGRE);
-  HighCut(HIGHCUT); 
+  HighCut(HIGHCUT);
  }
  else
  {
   loadheightmap();
-  lissage(LISSAGEDEGRE);  
+  lissage(LISSAGEDEGRE);
  }
-} 
+}
 
 /*---------------------------------------------------------------------------*/
 
 Ground::~Ground()
 {
-  for(int i=0; i<xground; i++) 
+  for(int i=0; i<xground; i++)
    delete [] map[i];
-   
-  delete [] map; 
+
+  delete [] map;
 }
 
 /*---------------------------------------------------------------------------*/
@@ -58,17 +58,19 @@ Ground::~Ground()
 void  Ground::loadheightmap()
 {
 int i, j;
- 
- set_color_depth(8);      	
- heightmap = load_bitmap("mountainheight513.bmp", NULL);                     
+
+ set_color_depth(8);
+ //heightmap = load_bitmap("mountainheight513.bmp", NULL);
+ heightmap = load_bitmap("canyonheight2.bmp", NULL);
+
  if ( !heightmap ) { allegro_message("No Highmap Found \n"); exit(1); }
- 
-  for(j=0; j<zground; j++) 
+
+  for(j=0; j<zground; j++)
    for(i=0; i<xground; i++)
     map[i][j]   = float( (unsigned char)getpixel(heightmap, i, j) );
-   
- destroy_bitmap(heightmap);  
- 
+
+ destroy_bitmap(heightmap);
+
 }
 
 /*---------------------------------------------------------------------------*/
@@ -97,12 +99,12 @@ scaledrnd = float(variance) * softcoef;
  {
   // altitude new points
   map[x1][zm] = (map[x1][zm]==-1.0) ? ((map[x1][z1]+map[x1][z2])/float(2))+scaledrnd : map[x1][zm];
-  map[xm][z1] = (map[xm][z1]==-1.0) ? ((map[x1][z1]+map[x2][z1])/float(2))+scaledrnd : map[xm][z1]; 
+  map[xm][z1] = (map[xm][z1]==-1.0) ? ((map[x1][z1]+map[x2][z1])/float(2))+scaledrnd : map[xm][z1];
   map[xm][z2] = (map[xm][z2]==-1.0) ? ((map[x1][z2]+map[x2][z2])/float(2))+scaledrnd : map[xm][z2];
-  map[x2][zm] = (map[x2][zm]==-1.0) ? ((map[x2][z1]+map[x2][z2])/float(2))+scaledrnd : map[x2][zm]; 
-  
+  map[x2][zm] = (map[x2][zm]==-1.0) ? ((map[x2][z1]+map[x2][z2])/float(2))+scaledrnd : map[x2][zm];
+
   map[xm][zm] = (map[xm][zm]==-1.0) ?((map[x1][z1]+map[x2][z1]+map[x1][z2]+map[x2][z2])/float(4))+scaledrnd :
-                                       map[xm][zm];                                 
+                                       map[xm][zm];
 
   // hauteur clipping
   map[x1][zm] = (map[x1][zm]<0.0)   ? 0.0   : map[x1][zm];
@@ -161,7 +163,7 @@ int i, j;
 float Ground::xrand(float xl, float xh)
 {
 #if defined(LINUX)
- return (xl + (xh - xl) *  drand48() ); 
+ return (xl + (xh - xl) *  drand48() );
 #else
  return (xl + (xh - xl) *  rand() / 32767.0 );
 #endif
