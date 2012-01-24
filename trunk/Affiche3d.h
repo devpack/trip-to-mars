@@ -6,7 +6,7 @@
 #include "Camera.h"
 #include "QuadTree.h"
 
-const GLfloat ZOOMGROUND     = 16.;
+const GLfloat ZOOMGROUND     = 12.;
 const GLfloat HIGHSCALE      = 8.;
 const GLfloat STANDINGHEIGHT = 20.;
 
