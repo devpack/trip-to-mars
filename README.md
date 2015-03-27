@@ -10,5 +10,3 @@ Nothing brand new in this code (a bit old now), but some still interesting techn
 
 ![alt tag](https://raw.githubusercontent.com/devpack/trip-to-mars/master/wiki/mars2.jpg)
 
-![alt tag](https://raw.githubusercontent.com/devpack/trip-to-mars/master/wiki/mars.jpg)
-
